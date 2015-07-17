@@ -36,7 +36,7 @@ Go to https://developers.facebook.com/tools/explorer/1629576067299480/:
 
 And then to https://graph.facebook.com/me/home?access_token=CAAXKFz6gOJgBABGlFLDV48ju5009P8DTFh9cGstt5ZAaWEUfbuxBzJgG8OSLSSDdZCDE5vYkwMqUj6OXVEeTMr806h6SfHoHR2FR0uoaVu406tIOEhQlr6ZBEKZCG0xpNpxh6OVzZACGMF9zUI0c3gwji5b9r9QTG7O55H6ratwe7XZAnDXCbliuKxwgPyZAWarYTTRKQ9OuLizWZBwTzxm6fq1dHcFZBqYR9cZBeQzSGYDQZDZD.
 
-### Canvas
+### Secure Canvas URL
 
 * Old canvas link: https://iscinc.github.io/festival/auth/facebook/canvas/
 * New canvas link: https://iscinc.github.io/festival/
