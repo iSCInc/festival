@@ -351,7 +351,7 @@
 					<span class="hover-text font-light ">San Francisco, California, USA<br>zip code XXXXXX</span>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
-					<p><a target="_blank" href="https://facebook.com/iSCIncorporated"><i class="icon icon-facebook"></i></a></p>
+					<p><a target="_blank" href="popups/facebook.html" onclick="basicPopup(this.href);return false"><i class="icon icon-facebook"></i></a></p>
 					<span class="hover-text font-light ">iSCIncorporated</span>
 					<br />
 					<br />
@@ -397,6 +397,14 @@
 		});
 	
 	});
+	</script>
+
+	<!-- PopUp Script -->
+	<script>
+	// JavaScript popup window function
+		function basicPopup(url) {
+	popupWindow = window.open(url,'popUpWindow','height=300,width=700,left=50,top=50,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
+		}
 	</script>
 
 </html>
