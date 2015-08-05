@@ -1,0 +1,4 @@
+# .htaccess
+
+## http://www.kaempf-nk.de/webseitengestaltung/blog/facebook-405-method-not-allowed.html
+ErrorDocument 405 index.html
