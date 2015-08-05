@@ -99,6 +99,15 @@
   });
 
   };
+  
+  FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    console.log('Logged in.');
+  }
+  else {
+    FB.login();
+  }
+  });
 
   // Load the SDK asynchronously
   (function(d, s, id) {
@@ -106,6 +115,7 @@
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/sdk.js";
+    // Debugging (https://developers.facebook.com/docs/javascript/advanced-setup#debugging): js.src = "//connect.facebook.net/en_US/sdk/debug.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
@@ -120,6 +130,23 @@
     });
   }
 </script>
+
+<!-- Login Button & Requesting Permissions (https://developers.facebook.com/docs/javascript/examples#graphapi) -->
+<script>
+// Only works after `FB.init` is called
+function myFacebookLogin() {
+  FB.login(function(){}, {scope: 'publish_actions'});
+}
+
+FB.login(function(){
+  // Note: The call will only work if you accept the permission request
+  FB.api('/me/feed', 'post', {message: 'Hello, world! I joined to the iSC Inc. Festival community!'});
+}, {scope: 'publish_actions'});
+</script>
+
+<div id="myFacebookLogin">
+<button onclick="myFacebookLogin()">Login with Facebook</button>
+</div>
 
 <!-- SITE START -->
 	<div class="navbar navbar-fixed-top" data-activeslide="1">
