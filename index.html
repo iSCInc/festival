@@ -129,11 +129,21 @@
       document.getElementById('status').innerHTML =
         'Thanks you for logging in with Facebook, ' + response.name + '!' + ' :-)';
     });
-    // Requesting Permissions & Publish The First Post (https://developers.facebook.com/docs/javascript/examples#graphapi)
-    FB.login(function(){
-    FB.api('/me/feed', 'post', {message: 'Hello, world! I'm going to visit the iSC Inc. Festival! A public iSC Inc. event for everybody to learn new things with wikis! :-D'});
-    }, {scope: 'publish_actions'});
   }
+  
+  //API init code is omitted
+  var wallPost = {
+    access_token: "<ACCESS_TOKEN>",
+    message: 'Hello, world! I am going to visit the iSC Inc. Festival! A public iSC Inc. event for everybody to learn new things with wikis!'
+  };
+
+  FB.api('/me/feed', 'post', wallPost, function(response) {
+    if (!response || response.error) {
+        alert('Posting error occurred!');
+    } else {
+        alert('Successful post!');
+    }
+  });
 </script>
 
 <!-- SITE START -->
