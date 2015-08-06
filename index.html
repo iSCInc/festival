@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 <head lang="en">
 
 	<meta charset="utf-8">
@@ -40,6 +40,44 @@
 
 </head>
 <body>
+
+
+<script>
+window.fbAsyncInit = function() {
+FB.init({
+  appId      : '1629576067299480',
+  xfbml      : true,
+  version    : 'v2.4'
+  });
+};
+
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    console.log('Logged in.');
+  }
+  else {
+    FB.login();
+  }
+});
+
+// Only works after `FB.init` is called
+function myFacebookLogin() {
+  FB.login(function(){}, {scope: 'publish_actions'});
+}
+
+FB.login(function(){
+  // Note: The call will only work if you accept the permission request
+  FB.api('/me/feed', 'post', {message: 'Hello, world! I am going to visit the iSC Inc. Festival! A public iSC Inc. event for everybody to learn new things with wikis!'});
+}, {scope: 'publish_actions'});
+</script>
 
 <!-- SITE START -->
 	<div class="navbar navbar-fixed-top" data-activeslide="1">
@@ -289,6 +327,7 @@
 					<span class="hover-text font-light ">iSCIncorporated</span>
 					<br />
 					<br />
+					<button onclick="myFacebookLogin()">Login with Facebook</button>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="https://twitter.com/iSCIncorporated"><i class="icon icon-twitter"></i></a></p>
@@ -296,26 +335,6 @@
 				</div><!-- /col12 -->
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
-			
-<fb:login-button autologoutlink="true" onlogin="OnRequestPermission();">
-</fb:login-button>
-<script language="javascript" type="text/javascript">
-    FB.init({
-        appId: '1629576067299480',
-        status: true, 
-        cookie: true, 
-        xfbml: true
-    });    
-    var message_str= 'Hello, world! I am going to visit the iSC Inc. Festival! A public iSC Inc. event for everybody to learn new things with wikis!';
-    FB.api('/me/feed', 'post', { message: message_str}, function(response) {
-      if (!response || response.error) {
-        alert('Couldn't Publish Data');
-      } else {
-        alert("Message successfully posted to your wall");
-      }
-    });
-</script>
-
 		</div><!-- /container -->
 	</div><!-- /Slide 6 -->
 
