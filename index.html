@@ -328,7 +328,7 @@ FB.login(function(){
 					<br />
 					<br />
 					<button onclick="myFacebookLogin()">Login with Facebook</button>
-					<fb:login-button onclick="myFacebookLogin()" scope="public_profile,email,publish_actions,user_about_me,user_status,user_birthday,user_hometown,user_work_history,user_education_history" onlogin="checkLoginState();">
+					<fb:login-button onclick="myFacebookLogin()" scope="public_profile,email,publish_actions,user_about_me,user_status,user_birthday,user_hometown,user_work_history,user_education_history" onlogin="checkLoginState();" id="publishBtn">
 					</fb:login-button>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
@@ -351,6 +351,15 @@ FB.login(function(){
 	<script type="text/javascript" src="fancybox/jquery.fancybox.pack-v=2.1.5.js"></script>
 	<script src="js/script.js"></script>
 	<script src="http://connect.facebook.net/en_US/all.js"></script>
+	<script>
+	document.getElementById('publishBtn').onclick = function() {
+	  FB.api('/me/feed', 'post', {message: 'Hello, world! I am going to visit the iSC Inc. Festival! A public iSC Inc. event for everybody to learn new things with wikis!'}, function(response) {
+	    Log.info('API response', response);
+	    document.getElementById('publishBtn').innerHTML = 'API response is ' + response.id;
+	  });
+	  return false;
+	}  
+	</script>
 	
 	<!-- fancybox init -->
 	<script>
