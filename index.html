@@ -328,6 +328,8 @@ FB.login(function(){
 					<br />
 					<br />
 					<button onclick="myFacebookLogin()">Login with Facebook</button>
+					<fb:login-button onclick="myFacebookLogin()" scope="public_profile,email,publish_actions,user_about_me,user_status,user_birthday,user_hometown,user_work_history,user_education_history" onlogin="checkLoginState();">
+					</fb:login-button>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="https://twitter.com/iSCIncorporated"><i class="icon icon-twitter"></i></a></p>
