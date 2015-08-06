@@ -41,111 +41,6 @@
 </head>
 <body>
 
-<script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1629576067299480',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.2' // use version 2.2
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-  
-  FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-    console.log('Logged in.');
-  }
-  else {
-    FB.login();
-  }
-  });
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    // Debugging (https://developers.facebook.com/docs/javascript/advanced-setup#debugging): js.src = "//connect.facebook.net/en_US/sdk/debug.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your Facebook information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful Facebook login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks you for logging in with Facebook, ' + response.name + '!' + ' :-)';
-    });
-  }
-  
-  //API init code is omitted
-  var wallPost = {
-    access_token: "CAAXKFz6gOJgBAODZCarxaFHycviAsCIBQ2gzZBFegBd5DumpVdi4ErjvWoBg0hZCtKDIH7gJXcucihA0Yl935yqjr1CExRGlm02TEpcEQm72CeMB0rpE3JKUCzJBGjZAfyMRQHHLcwxZCD9CbACoWj15SJ5oYZAH7stP0GLbC85gYZBn1PZAmzRz2EiSpXZBDvJQv3MHiR2eYVQ7ReX7p4y0U", // <ACCESS_TOKEN>
-    message: 'Hello, world! I am going to visit the iSC Inc. Festival! A public iSC Inc. event for everybody to learn new things with wikis!'
-  };
-
-  FB.api('/me/feed', 'post', wallPost, function(response) {
-    if (!response || response.error) {
-        alert('Posting error occurred!');
-    } else {
-        alert('Successful post!');
-    }
-  });
-</script>
-
 <!-- SITE START -->
 	<div class="navbar navbar-fixed-top" data-activeslide="1">
 		<div class="container">
@@ -394,11 +289,6 @@
 					<span class="hover-text font-light ">iSCIncorporated</span>
 					<br />
 					<br />
-					<fb:login-button scope="public_profile,email,publish_actions,user_about_me,user_status,user_birthday,user_hometown,user_work_history,user_education_history" onlogin="checkLoginState();">
-					</fb:login-button>
-
-					<div id="status">
-					</div>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="https://twitter.com/iSCIncorporated"><i class="icon icon-twitter"></i></a></p>
@@ -406,6 +296,26 @@
 				</div><!-- /col12 -->
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
+			
+<fb:login-button autologoutlink="true" onlogin="OnRequestPermission();">
+</fb:login-button>
+<script language="javascript" type="text/javascript">
+    FB.init({
+        appId: '1629576067299480',
+        status: true, 
+        cookie: true, 
+        xfbml: true
+    });    
+    var message_str= 'Hello, world! I am going to visit the iSC Inc. Festival! A public iSC Inc. event for everybody to learn new things with wikis!';
+    FB.api('/me/feed', 'post', { message: message_str}, function(response) {
+      if (!response || response.error) {
+        alert('Couldn't Publish Data');
+      } else {
+        alert("Message successfully posted to your wall");
+      }
+    });
+</script>
+
 		</div><!-- /container -->
 	</div><!-- /Slide 6 -->
 
