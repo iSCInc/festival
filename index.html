@@ -41,7 +41,8 @@
 </head>
 <body>
 
-
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
 <script>
 window.fbAsyncInit = function() {
 FB.init({
@@ -325,7 +326,7 @@ function myFacebookLogin() {
 					<fb:login-button onclick="myFacebookLogin()" scope="public_profile,email,publish_actions,user_about_me,user_status,user_birthday,user_hometown,user_work_history,user_education_history" onlogin="checkLoginState();">
 					</fb:login-button>
 					
-					<div id="publishBtn" style="padding-top: 20px"><button>Click me to publish a "Hello, World!" post to Facebook.</button></div>
+					<div id="publishBtn" class="fb-send" style="padding-top: 20px">Click me to publish a "Hello, World!" post to Facebook.</div>
 
 
 <script>
