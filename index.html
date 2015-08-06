@@ -72,11 +72,6 @@ FB.getLoginStatus(function(response) {
 function myFacebookLogin() {
   FB.login(function(){}, {scope: 'publish_actions'});
 }
-
-FB.login(function(){
-  // Note: The call will only work if you accept the permission request
-  FB.api('/me/feed', 'post', {message: 'Hello, world! I am going to visit the iSC Inc. Festival! A public iSC Inc. event for everybody to learn new things with wikis!'});
-}, {scope: 'publish_actions'});
 </script>
 
 <!-- SITE START -->
