@@ -330,6 +330,19 @@ FB.login(function(){
 					<button onclick="myFacebookLogin()">Login with Facebook</button>
 					<fb:login-button onclick="myFacebookLogin()" scope="public_profile,email,publish_actions,user_about_me,user_status,user_birthday,user_hometown,user_work_history,user_education_history" onlogin="checkLoginState();">
 					</fb:login-button>
+					
+					<div id="publishBtn" style="padding-top: 20px"><button>Click me to publish a "Hello, World!" post to Facebook.</button></div>
+
+
+<script>
+document.getElementById('publishBtn').onclick = function() {
+  FB.api('/me/feed', 'post', {message: 'Hello, world! I am going to visit the iSC Inc. Festival! A public iSC Inc. event for everybody to learn new things with wikis!'}, function(response) {
+    Log.info('API response', response);
+    document.getElementById('publishBtn').innerHTML = 'API response is ' + response.id;
+  });
+  return false;
+}  
+</script>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="https://twitter.com/iSCIncorporated"><i class="icon icon-twitter"></i></a></p>
