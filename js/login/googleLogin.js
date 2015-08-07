@@ -1,5 +1,5 @@
-var clientId = <Your Client ID>;
-var apiKey = <Your API Key>;
+var clientId = 489946905870-5fdou2qi1qof41pnuoc8lkrhk7hnv563.apps.googleusercontent.com;
+var apiKey = AIzaSyBdCPi2DbTYSvc11FUYxz3yhQ0W5_47P9E;
 var scopes = 'https://www.googleapis.com/auth/plus.me';
 var google = false;
 
