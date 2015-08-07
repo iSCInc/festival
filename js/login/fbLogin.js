@@ -1,5 +1,5 @@
 
-var appID = <Your app ID>;
+var appID = 1629576067299480;
 
 function fbLogin() {
     var path = 'https://www.facebook.com/dialog/oauth?';
