@@ -22,7 +22,7 @@ Commit:
     git add my.zip
     git commit -m "add zip"
     git lfs ls-files
-    git push origin master
+    git push origin gh-pages
 
 Untrack file types:
 
