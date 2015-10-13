@@ -15,4 +15,7 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# Git Large File Storage (LFS)
+## Add this automatically over Git bash or GitShell! DO NOT CHANGE! (-> Ask repo owner!)
 *.zip filter=lfs diff=lfs merge=lfs -text
