@@ -63,6 +63,16 @@ function onSignIn(googleUser) {
 }
 </script>
 
+<!-- Google Sign-out -->
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>
@@ -347,6 +357,8 @@ function myFacebookLogin() {
 					<br />
 					<!-- Google Sign-In button -->
 					<div class="g-signin2" data-onsuccess="onSignIn"></div>
+					<!-- Google Sign-Out button/link -->
+					<a href="#" onclick="signOut();">Sign out</a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="popups/facebook.html" onclick="basicPopup(this.href);return false"><i class="icon icon-facebook"></i></a></p>
