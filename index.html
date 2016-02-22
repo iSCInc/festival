@@ -71,6 +71,10 @@ function onSignIn(googleUser) {
   console.log('Email: ' + profile.getEmail());
 }
 
+  // The ID token you need to pass to your backend:
+  var id_token = googleUser.getAuthResponse().id_token;
+  console.log("ID Token: " + id_token);
+    
   // Sign the user in, and then retrieve their ID.
   auth2.signIn().then(function() {
     console.log(auth2.currentUser.get().getId());
