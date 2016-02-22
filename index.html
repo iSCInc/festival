@@ -54,6 +54,13 @@
 
 <!-- Get Google user profile information -->
 <script>
+gapi.load('auth2', function() {
+  auth2 = gapi.auth2.init({
+    client_id: '489946905870-t74lo2vorpp08boqcu74jc397eheomgf.apps.googleusercontent.com',
+    fetch_basic_profile: true,
+    scope: 'profile'
+  });
+
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -61,6 +68,12 @@ function onSignIn(googleUser) {
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail());
 }
+
+  // Sign the user in, and then retrieve their ID.
+  auth2.signIn().then(function() {
+    console.log(auth2.currentUser.get().getId());
+  });
+});
 </script>
 
 <!-- Google Sign-out -->
